@@ -19,10 +19,9 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    // Stop any running containers with the same name
-                   
-                    // Run the new container
-                    sh 'docker run -d -p 3000:3000 Shakila/backend-image'
+                    sh 'docker-compose up -d'
+
+
                 }
             }
         }
