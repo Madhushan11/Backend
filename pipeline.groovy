@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build .'
+                    sh 'docker build -t Shakila/frontend-app-image .'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                     // Stop any running containers with the same name
                    
                     // Run the new container
-                    sh 'docker compose up'
+                    sh 'docker run -d -p 3000:3000 Shakila/frontend-app-image'
                 }
             }
         }
