@@ -27,6 +27,10 @@ app.use(cors({
 // Connect to database
 connectToDb();
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the App");
+});
+
 app.post("/signup", usersController.signup);
 app.post("/login", usersController.login);
 app.get("/logout", usersController.logout);

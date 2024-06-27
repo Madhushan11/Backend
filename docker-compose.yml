@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  #MongoDB
+  mongo_db:
+    container_name: database_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      DB_URL: mongodb+srv://sheranga:sheranga123@cluster0.1w05mqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      SECRET: JHVHJVFCGTVHJCTYDTYVHJGYG
+      CLOUD_NAME: "dzwqw1te1"
+      CLOUD_KEY: "89328225235254"
+      CLOUD_KEY_SECRET: "fRgWZKmp60GHjIjex5EAoKgv2hg"
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}
+#run command
+# docker compose up
