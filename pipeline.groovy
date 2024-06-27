@@ -22,7 +22,7 @@ pipeline {
                     // Stop any running containers with the same name
                    
                     // Run the new container
-                    sh 'docker run -d -p 4001:3000 Shakila/frontend-app-image'
+                    sh 'docker run -d -p 3000:3000 Shakila/frontend-app-image'
                 }
             }
         }
