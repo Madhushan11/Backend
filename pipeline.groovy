@@ -19,8 +19,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh 'docker compose up -d 3000:3000 sakilamadhushanabc585/backend-image'
-
+                    sh 'docker compose up -d'
 
                 }
             }
