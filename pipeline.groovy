@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t umeshgayashan/backend-image .'
+                    sh 'docker build -t sakilamadhushanabc585/backend-image .'
                 }
             }
         }
@@ -32,9 +32,9 @@ pipeline {
         }
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'dockerhub_password', variable: 'Dockerhub')]) {
+                withCredentials([string(credentialsId: 'dockerhub_password1', variable: 'Dockerhub1')]) {
                     script {
-                        sh "docker login -u umeshgayashan -p ${Dockerhub}"
+                        sh "docker login -u sakilamadhushanabc585 -p ${Dockerhub1}"
                     }
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
                 script {
                     retry(3) {
                         echo 'Pushing Docker image to Docker Hub...'
-                        sh 'docker push umeshgayashan/backend-image'
+                        sh 'docker push sakilamadhushanabc585/backend-image'
                     }
                 }
             }
