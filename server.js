@@ -28,7 +28,7 @@ app.use(cors({
 connectToDb();
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the App");
+    res.send("Welcome to the react App");
 });
 
 app.post("/signup", usersController.signup);
