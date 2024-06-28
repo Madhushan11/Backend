@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t Shakila/backend-image .'
+                    sh 'docker build -t umeshgayashan/backend-image .'
                 }
             }
         }
@@ -28,6 +28,25 @@ pipeline {
         stage('Show Running Containers') {
             steps {
                 sh 'docker ps'
+            }
+        }
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub_password', variable: 'Dockerhub')]) {
+                    script {
+                        sh "docker login -u umeshgayashan -p ${Dockerhub}"
+                    }
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                script {
+                    retry(3) {
+                        echo 'Pushing Docker image to Docker Hub...'
+                        sh 'docker push umeshgayashan/backend-image'
+                    }
+                }
             }
         }
     }
